@@ -10,26 +10,49 @@
     --color-light-gray: #EDF0F5;    /* Светло-серый фон */
     --color-white: #FFFFFF;
 
-    /* Шрифты */
+    /* FONTS */
     --font-display: 'Montserrat', sans-serif;
-    --font-body: 'Nunito', sans-serif;
+    --font-text: 'Nunito', sans-serif;
+
+        /* Weights */
+        --weight-black: 900;
+        --weight-bold: 700;
+        --weight-semi-bold: 600;
+        --weight-regular: 400;
+        --weight-light: 300;
+
+        /* Sizes */
+        --size-display-large: 54px;
+        --size-display-medium: 30px;
+        --size-title: 24px;
+        --size-sub-title: 20px;
+        --size-price: 20px;
+        --size-body: 16px;
+        --size-discription: 16px;
+        --size-button: 16px;
+
+        /* Line heights */
+        --line-display-large: 70px;
+        --line-display-medium: 34px;
+        --line-title: 28px;
+        --line-sub-title: 24px;
+        --line-price: 24px;
+        --line-body: 20px;
+        --line-discription: 20px;
+        --line-button: 20px;
     
     /* Сетка и отступы */
-        --content-width: 1280px;
-        --section-padding-y: 80px;
-        --sidebar-width-ratio: 2fr; /* 2 части из 10 */
-        --main-content-ratio: 8fr;  /* 8 частей из 10 */
+    --content-width: 1280px;
+    --section-padding-y: 80px;
+    --sidebar-width-ratio: 2fr; /* 2 части из 10 */
+    --main-content-ratio: 8fr;  /* 8 частей из 10 */
 
     /* Иконки и медиа */
-    --path-image-banner: url('/assets/images/banner.jpg');
+    --path-image-banner: url('/assets/images/banner.png');
     --path-icon-cart: url('/assets/icons/shopping-cart.png');
 
+    --transition: 100ms;
 }
-
-/* Подключение шрифтов */
-@import url(/assets/fonts/Montserrat/stylesheet.css);
-@import url(/assets/fonts/Nunito/stylesheet.css);
-
 
 /* ============================================== */
 /* БАЗОВЫЕ СТИЛИ И СБРОС (RESET)                  */
@@ -42,31 +65,102 @@
 }
 
 body {
-    font-family: 'Nunito', sans-serif;
-    color: var(--color-primary);
     background-color: var(--color-white);
     line-height: 1.6;
     margin: 0 auto;
     max-width: 80em;
 }
 
-/* div {
-    width: fit-content;
-} */
-
-a {
-    text-decoration: none;
-    color: inherit;
+h3 {
+    font-family: var(--font-text);
+    font-weight: var(--weight-bold);
+    font-size: var(--size-title);
+    line-height: var(--line-title);
 }
 
-h1, h2, h3, h4 {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 700;
+p{
+    font-family: var(--font-text);
+    font-weight: var(--weight-regular);
+    font-size: var(--size-body);
+    line-height: var(--line-body);
+}
+
+button {
+    font-family: var(--font-text);
+    font-weight: var(--weight-bold);
+    font-size: var(--size-button);
+    line-height: var(--line-button);
+}
+
+/* ============================================== */
+/* БЛОК: шрифты                                   */
+/* ============================================== */
+
+/* Классы с использованием переменных */
+.display-large {
+    font-family: var(--font-display);
+    font-weight: var(--weight-black);
+    font-size: var(--size-display-large);
+    line-height: var(--line-display-large);
+}
+
+.display-medium {
+    font-family: var(--font-display);
+    font-weight: var(--weight-black);
+    font-size: var(--size-display-medium);
+    line-height: var(--line-display-medium);
+}
+
+.title {
+    font-family: var(--font-text);
+    font-weight: var(--weight-bold);
+    font-size: var(--size-title);
+    line-height: var(--line-title);
+}
+
+.sub-title,
+.price-product {
+    font-family: var(--font-text);
+    font-weight: var(--weight-semi-bold);
+    font-size: var(--size-sub-title);
+    line-height: var(--line-sub-title);
+}
+
+.body {
+    font-family: var(--font-text);
+    font-weight: var(--weight-regular);
+    font-size: var(--size-body);
+    line-height: var(--line-body);
+}
+
+.description {
+    font-family: var(--font-text);
+    font-weight: var(--weight-light);
+    font-style: italic;
+    font-size: var(--size-discription);
+    line-height: var(--line-discription);
+}
+
+.button {
+    font-family: var(--font-text);
+    font-weight: var(--weight-bold);
+    font-size: var(--size-button);
+    line-height: var(--line-button);
 }
 
 /* ============================================== */
 /* БЛОК: header                                   */
 /* ============================================== */
+
+/* Центрирует и задает макс ширину */
+.container {
+    max-width: 1200px;
+    height: auto;
+    margin: auto auto;
+    padding: 40px 20px;
+    background-color: var(--color-white);
+    /*border-radius: 20px;*/
+}
 
 .header {
     justify-content: space-between;
@@ -99,40 +193,59 @@ h1, h2, h3, h4 {
 /* ============================================== */
 
 .banner {
-    background-image: url('/assets/img/banner.png'); 
+    background-image: url('/assets/images/banner.png');
     background-size: cover; 
     background-position: center; 
     background-repeat: no-repeat;
 }
 
+/* Верхний баннер */
+.top-banner {
+    display: grid;
+    grid-template-columns: 2fr 1fr; /* Соотношение левой и правой частей 2:1 */
+    gap: 30px;
+    margin-bottom: 60px;
+    /*background: linear-gradient(135deg, var(--color-white) 0%, var(--color-dark-gray) 100%);*/
+    /*border-radius: 15px;*/
+    overflow: hidden;
+    min-height: 400px;
+    /*box-shadow: var(--shadow);*/
+}
+
+/* Левая часть баннера*/
+.banner-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 500px;
+    padding: 40px 20px;
+    background: url('assets/images/banner.png') no-repeat center center;
+    background-size: cover;
+    position: relative;
+}
+
+/* Правая часть баннера*/
+.banner-right {
+    background-color: var(--color-primary);
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+}
+
 /* ============================================== */
 /* БЛОК: hero (Главный заголовок)                 */
 /* ============================================== */
-
-.hero {
-    padding-bottom: 10vh;
-    width: fit-content;
-}
-
 .hero__title {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 900;
+    /* 💡 ИЗМЕНЕНИЕ: Цвет текста теперь --color-primary */
+    color: var(--color-primary);
     margin: 0;
     line-height: 0.9;
     letter-spacing: 0;
 }
 
-/* Модификатор: DisplayLarge (54px) */
-.hero__title--large {
-    font-size: 54px;
-    /* 💡 ИЗМЕНЕНИЕ: Цвет текста теперь --color-primary */
-    color: var(--color-primary);
-}
-
 /* Модификатор: Акцентная плашка */
 .hero__title--accent {
-    font-size: 54px;
-    color: var(--color-primary);
+    color: var(--color-white);
     /* Фон-плашка не меняется */
     background-color: var(--color-accent);
     padding: 10px 15px;
@@ -145,18 +258,15 @@ h1, h2, h3, h4 {
 /* ============================================== */
 
 .nav {
-    position: absolute;
-    right: 0;
-    top: 0;
-    width: 300px;
     background-color: var(--color-primary);
-    z-index: 20;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
 }
 
 .nav__list {
     list-style: none;
     text-transform: uppercase;
-    font-weight: 400;   /* Regular по умолчанию */
     line-height: 2.5;
     padding-top: 50px;
 }
@@ -182,11 +292,6 @@ h1, h2, h3, h4 {
     border-radius: 4px;
 }
 
-/* .nav__link:hover {
-background-color: #f0f0f0;
-transform: translateY(-1px);
-} */
-
 .nav__link:focus {
     outline: 2px solid #2c5530;
     outline-offset: 2px;
@@ -209,28 +314,15 @@ transform: translateY(-1px);
 /* ============================================== */
 
 .section {
+    /*background-color: var(--color-white);*/
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 20px;
     padding: 80px 0;
-    background-color: var(--white);
+    text-align: center;
 }
 
 .section__title {
-    text-align: center;
-    margin-bottom: 60px;
-}
-
-.section__title-subtitle {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 18px;
-    color: var(--primary-color);
-    margin-bottom: 10px;
-}
-
-.section__title-title {
-    font-size: 36px;
-    color: var(--dark-gray);
+    color: var(--color-primary);
 }
 
 /* ============================================== */
@@ -246,7 +338,7 @@ transform: translateY(-1px);
 }
 
 .grid__item {
-    background-color: var(--light-gray);
+    /*background-color: var(--color-light-gray);*/
     padding: 30px;
     border-radius: 10px;
     text-align: center;
@@ -264,7 +356,7 @@ transform: translateY(-1px);
 /* ============================================== */
 
 .card {
-    background-color: var(--white);
+    background-color: var(--color-white);
     border-radius: 10px;
     overflow: hidden;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
@@ -279,11 +371,11 @@ transform: translateY(-1px);
 .card__image {
     width: 100%;
     height: 200px;
-    background-color: var(--light-gray);
+    /*background-color: var(--color-light-gray);*/
     display: flex;
     align-items: center;
     justify-content: center;
-    color: var(--dark-gray);
+    color: var(--color-dark-gray);
     font-size: 16px;
 }
 
@@ -292,21 +384,17 @@ transform: translateY(-1px);
 }
 
 .card__price {
-    font-size: 20px;
-    color: var(--accent-color-1);
-    font-weight: 700;
+    color: var(--color-accent);
     margin-bottom: 10px;
 }
 
 .card__name {
-    font-size: 20px;
     margin-bottom: 10px;
-    color: var(--dark-gray);
+    color: var(--color-dark-gray);
 }
 
 .card__flavor {
-    font-size: 14px;
-    color: var(--primary-color);
+    color: var(--color-primary);
     margin-bottom: 20px;
 }
 
@@ -331,8 +419,8 @@ transform: translateY(-1px);
 }
 
 .btn--primary {
-    background-color: var(--accent-color-1);
-    color: var(--white);
+    background-color: var(--color-accent);
+    color: var(--color-white);
     border: none;
 }
 
@@ -342,13 +430,13 @@ transform: translateY(-1px);
 
 .btn--secondary {
     background-color: transparent;
-    color: var(--primary-color);
-    border: 1px solid var(--primary-color);
+    color: var(--color-primary);
+    border: 1px solid var(--color-primary);
 }
 
 .btn--secondary:hover {
-    background-color: var(--primary-color);
-    color: var(--white);
+    background-color: var(--color-primary);
+    color: var(--color-white);
 }
 
 /* ============================================== */
@@ -356,5 +444,8 @@ transform: translateY(-1px);
 /* ============================================== */
 
 .footer {
+    padding: 20px;
     text-align: center;
+    background: var(--color-light-gray);
+    color: var(--color-primary)
 }
