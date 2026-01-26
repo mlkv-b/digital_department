@@ -317,21 +317,22 @@ footer {
 
 .product-card {
     display: flex;
+    flex-direction: row;
     gap: 24px;
-    align-items: center;
-    padding: 20px;
-    border-radius: 12px;
-    /*background-color: var(--color-bg-card, #fff);*/
-    box-shadow: 0 4px 12px var(--color-shadow, rgba(0,0,0,0.05));
+    align-items: stretch; /* ← чтобы оба блока имели одинаковую высоту */
+    background-color: var(--color-white, #fff);
+    box-shadow: 0 4px 12px var(--color-light-gray, rgba(0, 0, 0, 0.05));
+    /*height: 240px; !* ← фиксированная высота, как в макете *!*/
 }
 
 .product-card__image {
-    width: 160px;
-    height: 240px;
+    /*width: 160px;*/
+    flex-shrink: 0; /* не сжимается при уменьшении */
     overflow: hidden;
     display: flex;
     justify-content: center;
     align-items: center;
+    /* Высота наследуется от .product-card благодаря align-items: stretch */
 }
 
 .product-card__image img {
@@ -341,14 +342,16 @@ footer {
 }
 
 .product-card__content {
+    padding: 25px;
     display: flex;
     flex-direction: column;
     gap: 8px;
     flex: 1;
+    justify-content: center; /* ← центрирует контент по вертикали */
 }
 
 .product-card__price {
-    color: var(--color-accent);
+    color: var(--color-accent, #888); /* вы оставили это — возможно, опечатка? */
     margin: 0;
 }
 
@@ -360,20 +363,21 @@ footer {
     margin: 0;
     word-break: break-word;
     overflow-wrap: break-word;
+    hyphens: auto;
 }
 
 .product-card__actions {
     display: flex;
     gap: 12px;
-    margin-top: 16px;
+    margin-top: auto; /* прижимает кнопки вниз, если нужно */
 }
 
+/* КНОПКИ — с закруглениями */
 .product-card__button {
     padding: 8px 20px;
     border: none;
     border-radius: 24px;
     cursor: pointer;
-    /* Шрифты НЕ заданы — наследуются от глобальных стилей */
 }
 
 .product-card__button--buy {
@@ -384,5 +388,29 @@ footer {
 .product-card__button--detail {
     background-color: transparent;
     color: var(--color-primary, #333);
-    /*border: 1px solid var(--color-button-detail-border, #ccc);*/
+}
+
+/* === АДАПТИВНОСТЬ === */
+
+@media (max-width: 600px) {
+    .product-card {
+        flex-direction: column;
+        height: auto; /* ← снимаем фиксированную высоту */
+        gap: 16px;
+        padding: 16px;
+    }
+
+    .product-card__image {
+        width: 100%;
+        height: auto;
+    }
+
+    .product-card__image img {
+        width: 100%;
+        height: auto;
+    }
+
+    .product-card__content {
+        justify-content: flex-start; /* ← убираем центрирование по вертикали */
+    }
 }
