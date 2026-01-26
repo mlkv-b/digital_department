@@ -9,6 +9,7 @@
     --color-dark-gray: #151D28;     /* Почти черный */
     --color-light-gray: #EDF0F5;    /* Светло-серый фон */
     --color-white: #FFFFFF;
+    --color-milk: #F8FBFF;
 
     /* FONTS */
     --font-display: 'Montserrat', sans-serif;
@@ -190,7 +191,7 @@ footer {
     max-width: 1200px;
     height: auto;
     margin: auto auto;
-    padding: 40px 20px;
+    padding: 60px 20px;
     /*background-color: var(--color-white);*/
     /*border-radius: 20px;*/
 }
@@ -207,14 +208,14 @@ footer {
 .section-home {
     background-image: linear-gradient(
             to right,
-            var(--color-white) 0% 75%,
+            var(--color-milk) 0% 75%,
             var(--color-primary) 75% 100%
     );
     transition: background-image 0.3s ease;
 }
 
 .section-about {
-    background-color: var(--color-white);
+    background-color: var(--color-milk);
     transition: background-image 0.3s ease;
 }
 
@@ -222,7 +223,7 @@ footer {
     background-image: linear-gradient(
             to right,
             var(--color-primary) 0% 25%,
-            var(--color-white) 25% 100%
+            var(--color-milk) 25% 100%
     );
     transition: background-image 0.3s ease;
 }
@@ -231,7 +232,7 @@ footer {
     background-image: linear-gradient(
             to right,
             var(--color-light-gray) 0% 75%,
-            var(--color-white) 75% 100%
+            var(--color-milk) 75% 100%
     );
     transition: background-image 0.3s ease;
 }
@@ -239,7 +240,7 @@ footer {
 .section-combosets {
     background-image: linear-gradient(
             to right,
-            var(--color-white) 0% 75%,
+            var(--color-milk) 0% 75%,
             var(--color-primary) 75% 100%
     );
     transition: background-image 0.3s ease;
@@ -344,6 +345,7 @@ footer {
 }
 
 .product-card__image {
+    background-color: var(--color-light-gray);
     flex: 1; /* ← займёт всё доступное пространство слева */
     min-width: 0; /* важно для корректного сжатия */
     overflow: hidden;
@@ -453,4 +455,66 @@ footer {
         white-space: normal;
         padding: 10px 16px;
     }
+}
+
+/* === Модификатор: вертикальная карточка === */
+.product-card--vertical {
+    background-color: var(--color-white);
+    flex-direction: column;
+    gap: 16px;
+}
+
+.product-card--vertical .product-card__image img {
+    background-color: var(--color-light-gray);
+    width: 100%;
+    height: auto;
+}
+
+.product-card--vertical .product-card__content {
+    width: 100%;
+    padding: 35px;
+    /*justify-content: flex-start;*/
+}
+
+.product-card--vertical .product-card__actions {
+    gap: 8px;
+}
+
+.product-card--vertical .product-card__button {
+    /*white-space: normal;*/
+    padding: 10px 16px;
+}
+
+/* Контейнер для цены */
+.product-price {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+/* Текущая цена */
+.current-price {
+    color: var(--color-accent);
+}
+
+/* Старая цена */
+.old-price {
+    color: var(--color-primary);
+    text-decoration: line-through;
+}
+
+/* Сетка товаров в карусели */
+.product-grid {
+    display: flex;
+    gap: 24px;
+    justify-content: center;
+    padding: 24px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Секция комбо-наборов */
+.combo-grid {
+    margin-top: 30px;
 }
