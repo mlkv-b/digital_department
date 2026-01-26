@@ -319,20 +319,18 @@ footer {
     display: flex;
     flex-direction: row;
     gap: 24px;
-    align-items: stretch; /* ← чтобы оба блока имели одинаковую высоту */
+    align-items: stretch;
     background-color: var(--color-white, #fff);
     box-shadow: 0 4px 12px var(--color-light-gray, rgba(0, 0, 0, 0.05));
-    /*height: 240px; !* ← фиксированная высота, как в макете *!*/
 }
 
 .product-card__image {
-    /*width: 160px;*/
-    flex-shrink: 0; /* не сжимается при уменьшении */
+    flex: 1; /* ← займёт всё доступное пространство слева */
+    min-width: 0; /* важно для корректного сжатия */
     overflow: hidden;
     display: flex;
     justify-content: center;
     align-items: center;
-    /* Высота наследуется от .product-card благодаря align-items: stretch */
 }
 
 .product-card__image img {
@@ -341,17 +339,19 @@ footer {
     object-fit: contain;
 }
 
+/* ← КЛЮЧЕВОЕ ИЗМЕНЕНИЕ */
 .product-card__content {
     padding: 25px;
     display: flex;
     flex-direction: column;
     gap: 8px;
-    flex: 1;
-    justify-content: center; /* ← центрирует контент по вертикали */
+    width: fit-content; /* ← ширина = содержимому */
+    max-width: 380px; /* ← ограничение на случай очень длинного текста */
+    justify-content: center;
 }
 
 .product-card__price {
-    color: var(--color-accent, #888); /* вы оставили это — возможно, опечатка? */
+    color: var(--color-accent, #888);
     margin: 0;
 }
 
@@ -369,15 +369,16 @@ footer {
 .product-card__actions {
     display: flex;
     gap: 12px;
-    margin-top: auto; /* прижимает кнопки вниз, если нужно */
+    margin-top: auto;
+    /* Не задаём width — он определяется кнопками */
 }
 
-/* КНОПКИ — с закруглениями */
 .product-card__button {
     padding: 8px 20px;
     border: none;
     border-radius: 24px;
     cursor: pointer;
+    white-space: nowrap; /* ← чтобы текст в кнопке не переносился */
 }
 
 .product-card__button--buy {
@@ -395,7 +396,7 @@ footer {
 @media (max-width: 600px) {
     .product-card {
         flex-direction: column;
-        height: auto; /* ← снимаем фиксированную высоту */
+        height: auto;
         gap: 16px;
         padding: 16px;
     }
@@ -403,6 +404,7 @@ footer {
     .product-card__image {
         width: 100%;
         height: auto;
+        flex: none; /* ← отключаем flex на мобильных */
     }
 
     .product-card__image img {
@@ -411,6 +413,11 @@ footer {
     }
 
     .product-card__content {
-        justify-content: flex-start; /* ← убираем центрирование по вертикали */
+        width: 100%; /* ← на мобильных — на всю ширину */
+        justify-content: flex-start;
+    }
+
+    .product-card__button {
+        flex: 1; /* ← кнопки растягиваются на мобильных */
     }
 }
