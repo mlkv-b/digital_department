@@ -243,13 +243,16 @@ footer {
     flex-direction: column;   /* располагает элементы друг под другом */
     align-items: center;      /* выравнивает их по центру по горизонтали */
     /*gap: 16px;                !* (опционально) отступ между блоками *!*/
+    word-break: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto;
 }
 
 /* ============================================== */
 /* БЛОК: card                                     */
 /* ============================================== */
 
-.cards {
+.cards-container {
     display: flex;
     flex-wrap: wrap;
     gap: 24px;
@@ -260,7 +263,8 @@ footer {
 }
 
 .card {
-    width: calc(25% - 18px);
+    /* Фиксированная ширина на десктопе — 4 карточки в ряд */
+    width: 250px; /* или другая подходящая ширина */
     padding: 24px;
     display: flex;
     flex-direction: column;
@@ -285,20 +289,24 @@ footer {
 
 .card__title,
 .card__text {
+    margin: 0;
     width: 100%;
     text-align: center;
-    word-wrap: break-word;
+    word-break: break-word;
     overflow-wrap: break-word;
-    margin: 0;
+    hyphens: auto;
 }
 
-/* Адаптивность */
+/* === Адаптивность: только при уменьшении === */
+
+/* Планшеты: 2 карточки в ряд */
 @media (max-width: 768px) {
     .card {
         width: calc(50% - 12px);
     }
 }
 
+/* Мобильные: 1 карточка в колонну */
 @media (max-width: 480px) {
     .card {
         width: 100%;
