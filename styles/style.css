@@ -249,27 +249,29 @@ footer {
 /* БЛОК: card                                     */
 /* ============================================== */
 
-.cards{
-    align-items: center;
+.cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    justify-content: center;
+    padding: 24px;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 .card {
-    width: 300px;
+    width: calc(25% - 18px);
     padding: 24px;
-    /*background-color: #fff;*/
-    /*border-radius: 12px;*/
-    /*box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);*/
-    text-align: center;
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 16px;
+    overflow: hidden;
 }
 
 .card__img {
     width: 80px;
     height: 80px;
-    overflow: hidden;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -278,20 +280,31 @@ footer {
 .card__img img {
     max-width: 100%;
     max-height: 100%;
-    object-fit: contain; /* сохраняет пропорции, не обрезает */
+    object-fit: contain;
 }
 
-.card__title {
-    font-size: 24px;
-    font-weight: 700;
-    color: #222;
-    margin: 0;
-}
-
+.card__title,
 .card__text {
-    /* Основная защита для текста */
     width: 100%;
     text-align: center;
     word-wrap: break-word;
     overflow-wrap: break-word;
+    margin: 0;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .card {
+        width: calc(50% - 12px);
+    }
+}
+
+@media (max-width: 480px) {
+    .card {
+        width: 100%;
+    }
+    .cards-container {
+        gap: 16px;
+        padding: 16px;
+    }
 }
