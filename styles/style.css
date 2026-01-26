@@ -239,10 +239,7 @@ footer {
 
 .section__title {
     color: var(--color-primary);
-    display: flex;
-    flex-direction: column;   /* располагает элементы друг под другом */
-    align-items: center;      /* выравнивает их по центру по горизонтали */
-    /*gap: 16px;                !* (опционально) отступ между блоками *!*/
+    text-align: center;
     word-break: break-word;
     overflow-wrap: break-word;
     hyphens: auto;
