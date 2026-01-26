@@ -133,6 +133,14 @@ footer {
     line-height: var(--line-button);
 }
 
+.text--outline {
+    text-shadow:
+            -2px  0 0 #ffffff,  /* лево */
+            2px  0 0 #ffffff,  /* право */
+            0  -2px 0 #ffffff,  /* верх */
+            0   2px 0 #ffffff;  /* низ */
+}
+
 /* ============================================== */
 /* БЛОК: hero (Главный заголовок)                 */
 /* ============================================== */
@@ -318,8 +326,12 @@ footer {
 .product-cards-container {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 32px; /* отступ между карточками */
+    gap: 32px;
     margin-top: 40px;
+    /* ← КЛЮЧЕВОЕ: ограничиваем ширину и центрируем */
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .product-card {
@@ -394,10 +406,17 @@ footer {
 
 /* === АДАПТИВНОСТЬ === */
 
-@media (max-width: 600px) {
+/* Планшеты: карточки друг под другом */
+@media (max-width: 1400px) {
+    .product-cards-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Мобильные: внутренняя компоновка карточки меняется (фото сверху) */
+@media (max-width: 615px) {
     .product-card {
         flex-direction: column;
-        height: auto;
         gap: 16px;
         padding: 16px;
     }
@@ -405,7 +424,6 @@ footer {
     .product-card__image {
         width: 100%;
         height: auto;
-        flex: none; /* ← отключаем flex на мобильных */
     }
 
     .product-card__image img {
@@ -414,11 +432,25 @@ footer {
     }
 
     .product-card__content {
-        width: 100%; /* ← на мобильных — на всю ширину */
+        width: 100%;
+        padding: 16px;
         justify-content: flex-start;
     }
 
     .product-card__button {
-        flex: 1; /* ← кнопки растягиваются на мобильных */
+        flex: 1;
+    }
+}
+
+/* === Очень узкий экран: кнопки в колонку === */
+@media (max-width: 380px) {
+    .product-card__actions {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .product-card__button {
+        white-space: normal;
+        padding: 10px 16px;
     }
 }
