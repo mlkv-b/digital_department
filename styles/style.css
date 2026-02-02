@@ -45,7 +45,7 @@
     /* Сетка и отступы */
     --content-width: 1200px; /* Исправил на 1200px, чтобы совпадало с контейнером */
 
-    --tranzition: 50ms;
+    --transition: 50ms;
 }
 
 /* ============================================== */
@@ -150,23 +150,33 @@ img {
 /* LAYOUT SECTIONS                                */
 /* ============================================== */
 
-.content-container {
-    max-width: var(--content-width);
-    height: auto;
-    margin: 0 auto;
-    padding: 60px 20px;
-}
-
+/* --- Общие стили для всех секций --- */
 .section {
     width: 100%;
     display: flex;
     overflow: hidden;
-    transition: background-image 0.3s ease;
+    /* Добавляем внутренний отступ сверху и снизу для каждой секции */
+    padding: 100px 0;
 }
 
-/* БЭМ Модификаторы для секций */
+/* Общие стили контейнера */
+.content-container {
+    max-width: var(--content-width);
+    margin: 0 auto;
+    /* Убираем вертикальный padding отсюда, чтобы он не суммировался с padding секции */
+    padding: 0 20px;
+    width: 100%;
+}
+
+/* --- Секция Home --- */
 .section--home {
-    background-image: linear-gradient(to right, var(--color-milk) 0% 75%, var(--color-primary) 75% 100%);
+    /* Градиент оставляем фоном секции, он не влияет на цвета <img> */
+    background: linear-gradient(to right,
+    var(--color-milk) 0% 75%,
+    var(--color-primary) 75% 100%);
+    position: relative;
+    padding: 0;
+    min-height: 100vh;
 }
 
 .section--about {
@@ -174,15 +184,24 @@ img {
 }
 
 .section--coffeesets {
-    background-image: linear-gradient(to right, var(--color-primary) 0% 25%, var(--color-milk) 25% 100%);
+    background-image:
+            linear-gradient(to right,
+            var(--color-primary) 0% 25%,
+            var(--color-milk) 25% 100%);
 }
 
 .section--giftsets {
-    background-image: linear-gradient(to right, var(--color-light-gray) 0% 75%, var(--color-milk) 75% 100%);
+    background-image:
+            linear-gradient(to right,
+            var(--color-light-gray) 0% 75%,
+            var(--color-milk) 75% 100%);
 }
 
 .section--combosets {
-    background-image: linear-gradient(to right, var(--color-milk) 0% 75%, var(--color-primary) 75% 100%);
+    background-image:
+            linear-gradient(to right,
+            var(--color-milk) 0% 75%,
+            var(--color-primary) 75% 100%);
 }
 
 .section__title {
@@ -192,6 +211,118 @@ img {
     overflow-wrap: break-word;
     hyphens: auto;
     margin-bottom: 40px; /* Добавил отступ, так как он часто нужен */
+}
+
+/* ============================================== */
+/* SECTION HOME (Лого и Заголовок)                */
+/* ============================================== */
+
+/* --- Специфичные стили для Home --- */
+.home__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    min-height: 100vh;
+    padding: 80px 20px 60px 20px;
+    box-sizing: border-box;
+    position: relative; /* Обязательно для абсолютного позиционирования баннера */
+    z-index: 5;
+}
+
+/* --- Декоративное изображение баннера --- */
+.home__banner {
+    position: absolute;
+    top: 0;
+    /* Сдвигаем левее. 30-35% — это точка "золотого сечения" для такого макета */
+    left: 35%;
+    height: 100%; /* Растягиваем по всей высоте секции */
+    width: 60%;  /* Ширина подстроится пропорционально */
+    z-index: 1;  /* Картинка за логотипом и текстом */
+    pointer-events: none; /* Чтобы не мешала выделять текст или кликать */
+    display: flex;
+    align-items: center; /* Центрируем содержимое по вертикали внутри контейнера */
+}
+
+.home__banner img {
+    height: 100%; /* Заставляем саму картинку занять 100% высоты родителя */
+    width: auto;  /* Ширина высчитывается автоматически, чтобы не было искажений */
+    object-fit: contain; /* Набор кофе целиком поместится в высоту, не обрезаясь */
+
+    /* Если нужно, чтобы картинка была ОЧЕНЬ большой и немного уходила за края:
+       object-fit: cover;
+    */
+
+    /* Чистые цвета и мягкая тень для объема */
+    filter: drop-shadow(0 20px 80px rgba(0,0,0,0.12));
+}
+
+/* Убеждаемся, что текстовые элементы выше картинки */
+.home__logo, .home__content {
+    position: relative;
+    z-index: 10;
+}
+
+.home__title {
+    color: var(--color-primary);
+    text-transform: uppercase;
+    line-height: 1.1;
+    padding-left: 15px;
+}
+
+.home__title-accent {
+    display: inline-block;
+    background-color: var(--color-accent);
+    color: var(--color-white);
+    padding: 0 15px;
+    margin-left: -15px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+/* --- Боковая панель для меню --- */
+.home__side-menu {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 25%; /* Соответствует синей полосе градиента (100% - 75%) */
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 20;
+}
+
+/* --- Адаптивность --- */
+
+@media (max-width: 1100px) {
+    .home__banner {
+        left: 40%; /* Сдвигаем еще левее на средних экранах */
+        width: 45%;
+    }
+}
+
+@media (max-width: 850px) {
+    /* На маленьких экранах изображение может мешать тексту */
+    .home__banner {
+        opacity: 0.3; /* Или скрыть совсем: display: none; */
+        left: 50%;
+        width: 70%;
+    }
+
+    .section--home {
+        /* На мобилках лучше убрать жесткий градиент */
+        background: var(--color-milk);
+    }
+
+    .home__side-menu {
+        position: fixed; /* Меню всегда под рукой */
+        bottom: 0;
+        top: auto;
+        width: 100%;
+        height: 60px;
+        background: var(--color-primary);
+    }
 }
 
 /* ============================================== */
@@ -387,6 +518,139 @@ img {
 }
 
 /* ============================================== */
+/* GIFT CARD BLOCK (С наложением)                 */
+/* ============================================== */
+
+.gift-card {
+    display: flex;
+    /* Убрали фон и тень с главного контейнера */
+    max-width: 1100px; /* Чуть шире, чтобы компенсировать наложение */
+    margin: 60px auto; /* Добавили внешние отступы сверху/снизу */
+    align-items: center; /* Выравнивание по вертикали */
+    position: relative;
+}
+
+.gift-card__image {
+    /* Изображение занимает около 45% ширины */
+    flex: 0 0 45%;
+    /* Убрали серый фон и паддинги */
+    display: flex;
+    justify-content: center;
+    position: relative;
+    z-index: 2; /* ВАЖНО: Изображение выше по слою, чем контент */
+    /* Небольшой сдвиг влево для акцента, как на макете */
+    transform: translateX(-20px);
+}
+
+.gift-card__image img {
+    max-width: 110%; /* Позволяем картинке быть чуть больше своего блока */
+    height: auto;
+    /* Усиленная тень для большего объема и отделения от фона */
+    filter: drop-shadow(0 20px 30px rgba(0,0,0,0.15));
+}
+
+.gift-card__content {
+    flex: 1;
+    /* Фон и тень переехали сюда */
+    background-color: var(--color-white);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+    border-radius: 4px;
+    position: relative;
+    z-index: 1; /* Контент ниже по слою */
+
+    /* ВАЖНО: Отрицательный отступ слева затягивает блок под картинку */
+    margin-left: -120px;
+
+    /* ВАЖНО: Увеличенный паддинг слева, чтобы текст не залез под картинку.
+       Он должен быть больше, чем отрицательный margin */
+    padding: 60px 60px 60px 140px;
+}
+
+
+.gift-card__price {
+    color: var(--color-accent);
+    margin-bottom: 8px;
+}
+
+.gift-card__title {
+    margin-bottom: 16px;
+    color: var(--color-primary);
+}
+
+.gift-card__description {
+    margin-bottom: 30px;
+    color: var(--color-primary);
+    opacity: 0.8;
+}
+
+/* Сетка характеристик */
+.gift-card__specs {
+    display: flex;
+    gap: 40px;
+    margin-bottom: 40px;
+    padding-top: 20px;
+    border-top: 1px solid var(--color-light-gray); /* Легкая линия разделитель как на макете */
+}
+
+.gift-card__spec-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.gift-card__spec-icon {
+    width: 36px;
+    height: 36px;
+    object-fit: contain;
+}
+
+.gift-card__spec-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.gift-card__spec-text .text--description {
+    font-style: normal;
+    font-size: 13px;
+    color: var(--color-primary);
+    opacity: 0.6;
+    margin-bottom: 2px;
+}
+
+/* Кнопки */
+.gift-card__actions {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.gift-card__button {
+    border: none;
+    cursor: pointer;
+    background: none;
+    transition: opacity 0.2s ease;
+    letter-spacing: 0.5px;
+}
+
+.gift-card__button:hover {
+    opacity: 0.8;
+}
+
+.gift-card__button--buy {
+    background-color: var(--color-accent);
+    color: var(--color-white);
+    padding: 14px 38px; /* Чуть больше кнопки */
+    border-radius: 30px;
+    box-shadow: 0 10px 20px -5px rgba(199, 161, 122, 0.5); /* Тень в цвет кнопки */
+}
+
+.gift-card__button--detail {
+    color: var(--color-primary);
+    text-decoration: none;
+    font-weight: var(--weight-bold);
+}
+
+/* ============================================== */
 /* АДАПТИВНОСТЬ                                   */
 /* ============================================== */
 
@@ -438,6 +702,71 @@ img {
     .product-card__button {
         white-space: normal;
         padding: 10px 16px;
+        width: 100%;
+    }
+}
+
+/* ============================================== */
+/* АДАПТИВНОСТЬ ДЛЯ GIFT CARD                     */
+/* ============================================== */
+
+@media (max-width: 1024px) {
+    /* На планшетах уменьшаем наложение */
+    .gift-card__content {
+        margin-left: -80px;
+        padding-left: 100px;
+    }
+}
+
+@media (max-width: 900px) {
+    .gift-card {
+        flex-direction: column;
+        max-width: 550px;
+        /* Сбрасываем внешние отступы */
+        margin: 30px auto;
+    }
+
+    .gift-card__image {
+        flex: 0 0 auto;
+        width: 100%;
+        max-width: 400px;
+        /* На мобильном картинка сверху, убираем боковой сдвиг */
+        transform: translateY(30px); /* Сдвигаем немного вниз, чтобы наехала на контент сверху */
+        margin-bottom: -30px; /* Компенсируем сдвиг отрицательным отступом */
+    }
+
+    .gift-card__content {
+        width: 100%;
+        /* Сбрасываем "настольные" отступы и паддинги */
+        margin-left: 0;
+        padding: 60px 30px 40px; /* Увеличенный паддинг сверху для картинки */
+        text-align: center;
+    }
+
+    .gift-card__specs {
+        flex-direction: column;
+        gap: 20px;
+        align-items: center; /* Центрируем характеристики */
+        text-align: left;
+    }
+
+    .gift-card__actions {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 450px) {
+    .gift-card__specs {
+        align-items: flex-start;
+        width: 100%;
+    }
+
+    .gift-card__actions {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .gift-card__button--buy {
         width: 100%;
     }
 }
