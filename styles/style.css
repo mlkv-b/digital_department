@@ -3,59 +3,53 @@
 /* ============================================== */
 :root {
     /* Цвета */
-    --color-primary: #415167;       /* Синий */
-    --color-accent: #C7A17A;        /* Коричневый/Золотистый */
-    --color-accent-light: #F9F5E8;  /* Кремовый фон */
-    --color-dark-gray: #151D28;     /* Почти черный */
-    --color-light-gray: #EDF0F5;    /* Светло-серый фон */
+    --color-primary: #415167;
+    --color-accent: #C7A17A;
+    --color-accent-light: #F9F5E8;
+    --color-dark-gray: #151D28;
+    --color-light-gray: #EDF0F5;
     --color-white: #FFFFFF;
+    --color-milk: #F8FBFF;
 
     /* FONTS */
     --font-display: 'Montserrat', sans-serif;
     --font-text: 'Nunito', sans-serif;
 
-        /* Weights */
-        --weight-black: 900;
-        --weight-bold: 700;
-        --weight-semi-bold: 600;
-        --weight-regular: 400;
-        --weight-light: 300;
+    /* Weights */
+    --weight-black: 900;
+    --weight-bold: 700;
+    --weight-semi-bold: 600;
+    --weight-regular: 400;
+    --weight-light: 300;
 
-        /* Sizes */
-        --size-display-large: 54px;
-        --size-display-medium: 30px;
-        --size-title: 24px;
-        --size-sub-title: 20px;
-        --size-price: 20px;
-        --size-body: 16px;
-        --size-discription: 16px;
-        --size-button: 16px;
+    /* Sizes */
+    --size-display-large: 54px;
+    --size-display-medium: 30px;
+    --size-title: 24px;
+    --size-sub-title: 20px;
+    --size-price: 20px;
+    --size-body: 16px;
+    --size-description: 16px;
+    --size-button: 16px;
 
-        /* Line heights */
-        --line-display-large: 70px;
-        --line-display-medium: 34px;
-        --line-title: 28px;
-        --line-sub-title: 24px;
-        --line-price: 24px;
-        --line-body: 20px;
-        --line-discription: 20px;
-        --line-button: 20px;
-    
+    /* Line heights */
+    --line-display-large: 70px;
+    --line-display-medium: 34px;
+    --line-title: 28px;
+    --line-sub-title: 24px;
+    --line-price: 24px;
+    --line-body: 20px;
+    --line-description: 20px;
+    --line-button: 20px;
+
     /* Сетка и отступы */
-    --content-width: 1280px;
-    --section-padding-y: 80px;
-    --sidebar-width-ratio: 2fr; /* 2 части из 10 */
-    --main-content-ratio: 8fr;  /* 8 частей из 10 */
+    --content-width: 1200px; /* Исправил на 1200px, чтобы совпадало с контейнером */
 
-    /* Иконки и медиа */
-    --path-image-banner: url('/assets/images/banner.png');
-    --path-icon-cart: url('/assets/icons/shopping-cart.png');
-
-    --transition: 100ms;
+    --transition: 50ms;
 }
 
 /* ============================================== */
-/* БАЗОВЫЕ СТИЛИ И СБРОС (RESET)                  */
+/* RESET & BASE                                   */
 /* ============================================== */
 
 * {
@@ -65,387 +59,714 @@
 }
 
 body {
-    background-color: var(--color-white);
     line-height: 1.6;
     margin: 0 auto;
-    max-width: 80em;
 }
 
-h3 {
-    font-family: var(--font-text);
-    font-weight: var(--weight-bold);
-    font-size: var(--size-title);
-    line-height: var(--line-title);
+footer {
+    padding: 20px;
+    text-align: center;
+    background: var(--color-light-gray);
+    color: var(--color-primary)
 }
 
-p{
-    font-family: var(--font-text);
-    font-weight: var(--weight-regular);
-    font-size: var(--size-body);
-    line-height: var(--line-body);
-}
-
-button {
-    font-family: var(--font-text);
-    font-weight: var(--weight-bold);
-    font-size: var(--size-button);
-    line-height: var(--line-button);
+img {
+    max-width: 100%;
+    height: auto;
+    display: block; /* Убирает отступы снизу у картинок */
 }
 
 /* ============================================== */
-/* БЛОК: шрифты                                   */
+/* ТИПОГРАФИКА (Утилитарные классы)               */
 /* ============================================== */
 
-/* Классы с использованием переменных */
-.display-large {
+.text--display-large {
     font-family: var(--font-display);
     font-weight: var(--weight-black);
     font-size: var(--size-display-large);
     line-height: var(--line-display-large);
 }
 
-.display-medium {
+.text--display-medium {
     font-family: var(--font-display);
     font-weight: var(--weight-black);
     font-size: var(--size-display-medium);
     line-height: var(--line-display-medium);
 }
 
-.title {
+.text--title {
     font-family: var(--font-text);
     font-weight: var(--weight-bold);
     font-size: var(--size-title);
     line-height: var(--line-title);
 }
 
-.sub-title,
-.price-product {
+.text--sub-title,
+.text--price-product {
     font-family: var(--font-text);
     font-weight: var(--weight-semi-bold);
     font-size: var(--size-sub-title);
     line-height: var(--line-sub-title);
 }
 
-.body {
+.text--body {
     font-family: var(--font-text);
     font-weight: var(--weight-regular);
     font-size: var(--size-body);
     line-height: var(--line-body);
 }
 
-.description {
+.text--description {
     font-family: var(--font-text);
     font-weight: var(--weight-light);
     font-style: italic;
-    font-size: var(--size-discription);
-    line-height: var(--line-discription);
+    font-size: var(--size-description);
+    line-height: var(--line-description);
 }
 
-.button {
+.text--button {
     font-family: var(--font-text);
     font-weight: var(--weight-bold);
     font-size: var(--size-button);
     line-height: var(--line-button);
 }
 
-/* ============================================== */
-/* БЛОК: header                                   */
-/* ============================================== */
-
-/* Центрирует и задает макс ширину */
-.container {
-    max-width: 1200px;
-    height: auto;
-    margin: auto auto;
-    padding: 40px 20px;
-    background-color: var(--color-white);
-    /*border-radius: 20px;*/
-}
-
-.header {
-    justify-content: space-between;
-    padding: 5rem;
-}
-
-.header--right {
-    display: flex;
-    position: relative;
-}
-
-.header__image-container {
-    width: 100%;
-    height: 100%;
-    position: relative;
-    overflow: hidden;
-}
-
-.header--image {
-    width: 100%;
-    height: 100%;
-    position: relative;
-    background-image: var(--path-image-banner);
-    background-size: cover;
-    background-position: center;
+.text--outline {
+    text-shadow:
+            -2px  0 0 #ffffff,
+            2px  0 0 #ffffff,
+            0  -2px 0 #ffffff,
+            0   2px 0 #ffffff;
 }
 
 /* ============================================== */
-/* БЛОК: banner                                   */
+/* HEADER / NAV / HERO (Заглушки из твоего кода)  */
 /* ============================================== */
-
-.banner {
-    background-image: url('/assets/images/banner.png');
-    background-size: cover; 
-    background-position: center; 
-    background-repeat: no-repeat;
-}
-
-/* Верхний баннер */
-.top-banner {
-    display: grid;
-    grid-template-columns: 2fr 1fr; /* Соотношение левой и правой частей 2:1 */
-    gap: 30px;
-    margin-bottom: 60px;
-    /*background: linear-gradient(135deg, var(--color-white) 0%, var(--color-dark-gray) 100%);*/
-    /*border-radius: 15px;*/
-    overflow: hidden;
-    min-height: 400px;
-    /*box-shadow: var(--shadow);*/
-}
-
-/* Левая часть баннера*/
-.banner-left {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    height: 500px;
-    padding: 40px 20px;
-    background: url('assets/images/banner.png') no-repeat center center;
-    background-size: cover;
-    position: relative;
-}
-
-/* Правая часть баннера*/
-.banner-right {
-    background-color: var(--color-primary);
-    padding: 30px;
-    display: flex;
-    flex-direction: column;
-}
-
-/* ============================================== */
-/* БЛОК: hero (Главный заголовок)                 */
-/* ============================================== */
-.hero__title {
-    /* 💡 ИЗМЕНЕНИЕ: Цвет текста теперь --color-primary */
-    color: var(--color-primary);
-    margin: 0;
-    line-height: 0.9;
-    letter-spacing: 0;
-}
-
-/* Модификатор: Акцентная плашка */
-.hero__title--accent {
-    color: var(--color-white);
-    /* Фон-плашка не меняется */
-    background-color: var(--color-accent);
-    padding: 10px 15px;
-    margin-left: -15px;
-    display: inline-block;
-}
-
-/* ============================================== */
-/* БЛОК: nav   (Навигация)                        */
-/* ============================================== */
-
-.nav {
-    background-color: var(--color-primary);
-    padding: 30px;
-    display: flex;
-    flex-direction: column;
-}
-
-.nav__list {
-    list-style: none;
-    text-transform: uppercase;
-    line-height: 2.5;
-    padding-top: 50px;
-}
-
-.nav__item {
-    margin: 10px 0;
-}
-
-.nav__link {
-    color: var(--color-white);
-    text-decoration: none;
-    transition: font-weight 0.2s ease-in-out;
-}
-
-.nav__link:hover,
-.nav__link--active {
-    font-weight: bold;   /* Bold (Акцент) */
-}
-
-.nav__link {
-    transition: all 0.3s ease;
-    padding: 0.5rem 1rem;
-    border-radius: 4px;
-}
-
-.nav__link:focus {
-    outline: 2px solid #2c5530;
-    outline-offset: 2px;
-}
-
-.nav__link:active {
-    transform: translateY(0);
-}
-
-/* ============================================== */
-/* БЛОК: logo                                     */
-/* ============================================== */
-
-.logo {
+.logo, .hero, .menu {
     width: fit-content;
 }
 
 /* ============================================== */
-/* БЛОК: section                                  */
+/* LAYOUT SECTIONS                                */
 /* ============================================== */
 
+/* --- Общие стили для всех секций --- */
 .section {
-    /*background-color: var(--color-white);*/
-    max-width: 1200px;
+    width: 100%;
+    display: flex;
+    overflow: hidden;
+    /* Добавляем внутренний отступ сверху и снизу для каждой секции */
+    padding: 100px 0;
+}
+
+/* Общие стили контейнера */
+.content-container {
+    max-width: var(--content-width);
     margin: 0 auto;
-    padding: 80px 0;
-    text-align: center;
+    /* Убираем вертикальный padding отсюда, чтобы он не суммировался с padding секции */
+    padding: 0 20px;
+    width: 100%;
+}
+
+/* --- Секция Home --- */
+.section--home {
+    /* Градиент оставляем фоном секции, он не влияет на цвета <img> */
+    background: linear-gradient(to right,
+    var(--color-milk) 0% 75%,
+    var(--color-primary) 75% 100%);
+    position: relative;
+    padding: 0;
+    min-height: 100vh;
+}
+
+.section--about {
+    background-color: var(--color-milk);
+}
+
+.section--coffeesets {
+    background-image:
+            linear-gradient(to right,
+            var(--color-primary) 0% 25%,
+            var(--color-milk) 25% 100%);
+}
+
+.section--giftsets {
+    background-image:
+            linear-gradient(to right,
+            var(--color-light-gray) 0% 75%,
+            var(--color-milk) 75% 100%);
+}
+
+.section--combosets {
+    background-image:
+            linear-gradient(to right,
+            var(--color-milk) 0% 75%,
+            var(--color-primary) 75% 100%);
 }
 
 .section__title {
     color: var(--color-primary);
-}
-
-/* ============================================== */
-/* БЛОК: grid (Сетка)                             */
-/* ============================================== */
-
-.grid-base {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 30px;
-    margin-top: 40px;
-    width: 100%;
-}
-
-.grid__item {
-    /*background-color: var(--color-light-gray);*/
-    padding: 30px;
-    border-radius: 10px;
     text-align: center;
-    transition: var(--transition);
-    cursor: pointer;
-}
-
-.grid__item:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    word-break: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto;
+    margin-bottom: 40px; /* Добавил отступ, так как он часто нужен */
 }
 
 /* ============================================== */
-/* БЛОК: card (Карточка товара)                   */
+/* SECTION HOME (Лого и Заголовок)                */
 /* ============================================== */
 
-.card {
-    background-color: var(--color-white);
-    border-radius: 10px;
+/* --- Специфичные стили для Home --- */
+.home__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    min-height: 100vh;
+    padding: 80px 20px 60px 20px;
+    box-sizing: border-box;
+    position: relative; /* Обязательно для абсолютного позиционирования баннера */
+    z-index: 5;
+}
+
+/* --- Декоративное изображение баннера --- */
+.home__banner {
+    position: absolute;
+    top: 0;
+    /* Сдвигаем левее. 30-35% — это точка "золотого сечения" для такого макета */
+    left: 35%;
+    height: 100%; /* Растягиваем по всей высоте секции */
+    width: 60%;  /* Ширина подстроится пропорционально */
+    z-index: 1;  /* Картинка за логотипом и текстом */
+    pointer-events: none; /* Чтобы не мешала выделять текст или кликать */
+    display: flex;
+    align-items: center; /* Центрируем содержимое по вертикали внутри контейнера */
+}
+
+.home__banner img {
+    height: 100%; /* Заставляем саму картинку занять 100% высоты родителя */
+    width: auto;  /* Ширина высчитывается автоматически, чтобы не было искажений */
+    object-fit: contain; /* Набор кофе целиком поместится в высоту, не обрезаясь */
+
+    /* Если нужно, чтобы картинка была ОЧЕНЬ большой и немного уходила за края:
+       object-fit: cover;
+    */
+
+    /* Чистые цвета и мягкая тень для объема */
+    filter: drop-shadow(0 20px 80px rgba(0,0,0,0.12));
+}
+
+/* Убеждаемся, что текстовые элементы выше картинки */
+.home__logo, .home__content {
+    position: relative;
+    z-index: 10;
+}
+
+.home__title {
+    color: var(--color-primary);
+    text-transform: uppercase;
+    line-height: 1.1;
+    padding-left: 15px;
+}
+
+.home__title-accent {
+    display: inline-block;
+    background-color: var(--color-accent);
+    color: var(--color-white);
+    padding: 0 15px;
+    margin-left: -15px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+/* --- Боковая панель для меню --- */
+.home__side-menu {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 25%; /* Соответствует синей полосе градиента (100% - 75%) */
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 20;
+}
+
+/* --- Адаптивность --- */
+
+@media (max-width: 1100px) {
+    .home__banner {
+        left: 40%; /* Сдвигаем еще левее на средних экранах */
+        width: 45%;
+    }
+}
+
+@media (max-width: 850px) {
+    /* На маленьких экранах изображение может мешать тексту */
+    .home__banner {
+        opacity: 0.3; /* Или скрыть совсем: display: none; */
+        left: 50%;
+        width: 70%;
+    }
+
+    .section--home {
+        /* На мобилках лучше убрать жесткий градиент */
+        background: var(--color-milk);
+    }
+
+    .home__side-menu {
+        position: fixed; /* Меню всегда под рукой */
+        bottom: 0;
+        top: auto;
+        width: 100%;
+        height: 60px;
+        background: var(--color-primary);
+    }
+}
+
+/* ============================================== */
+/* FEATURE CARDS (бывший .card)                   */
+/* ============================================== */
+
+.features-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    justify-content: center;
+    padding: 24px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.feature-card {
+    width: 250px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
     overflow: hidden;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-    transition: var(--transition);
 }
 
-.card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+.feature-card__img {
+    width: 80px;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.card__image {
+.feature-card__img img {
+    object-fit: contain;
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.feature-card__title,
+.feature-card__text {
+    margin: 0;
     width: 100%;
-    height: 200px;
-    /*background-color: var(--color-light-gray);*/
+    text-align: center;
+    word-break: break-word;
+    overflow-wrap: break-word;
+}
+
+/* Адаптив для Features */
+@media (max-width: 768px) {
+    .feature-card { width: calc(50% - 12px); }
+}
+
+@media (max-width: 480px) {
+    .feature-card { width: 100%; }
+    .features-grid { gap: 16px; padding: 16px; }
+}
+
+/* ============================================== */
+/* PRODUCT CARD (Универсальный блок)              */
+/* ============================================== */
+
+/* Контейнер для сетки продуктов */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+/* Контейнер для комбо (три в ряд) */
+.combo-grid {
+    display: grid;
+    /* Создаем 3 колонки, которые делят место поровну */
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    max-width: var(--content-width);
+    margin: 30px auto 0;
+    padding: 0 20px;
+}
+
+/* Блок Карточки */
+.product-card {
+    display: flex;
+    flex-direction: row; /* По умолчанию горизонтальная */
+    gap: 24px;
+    align-items: stretch;
+    background-color: var(--color-white, #fff);
+    box-shadow: 0 4px 10px var(--color-light-gray, rgba(0, 0, 0, 0.01));
+}
+
+.product-card__image {
+    background-color: var(--color-light-gray);
+    flex: 1;
+    min-width: 0;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.product-card__content {
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: fit-content;
+    max-width: 380px;
+    justify-content: center;
+}
+
+.product-card__price {
+    color: var(--color-accent, #888);
+    margin: 0;
+}
+
+.product-card__title, .product-card__description {
+    margin: 0;
+    word-break: break-word;
+    overflow-wrap: break-word;
+}
+
+.product-card__actions {
+    display: flex;
+    gap: 12px;
+    margin-top: auto;
+}
+
+.product-card__button {
+    padding: 8px 20px;
+    border: none;
+    border-radius: 24px;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: opacity var(--transition);
+}
+.product-card__button:hover {
+    opacity: 0.8;
+}
+
+.product-card__button--buy {
+    background-color: var(--color-accent, #e6b87c);
+    color: var(--color-white, #fff);
+}
+
+.product-card__button--detail {
+    background-color: transparent;
+    color: var(--color-primary, #333);
+}
+
+/* --- МОДИФИКАТОР: Вертикальная карточка --- */
+.product-card--vertical {
+    flex-direction: column;
+    gap: 16px;
+    width: 100%;
+    /* Убираем жесткий max-width или делаем его чуть меньше, например 370px */
+    max-width: 100%;
+}
+
+.product-card--vertical .product-card__image img {
+    width: 100%;
+    height: auto;
+}
+
+.product-card--vertical .product-card__content {
+    width: 100%;
+    padding: 35px;
+    max-width: 100%;
+}
+
+.product-card--vertical .product-card__actions {
+    gap: 8px;
+}
+
+/* --- Внутренние элементы цен для комбо --- */
+.product-price-wrapper {
     display: flex;
     align-items: center;
-    justify-content: center;
-    color: var(--color-dark-gray);
-    font-size: 16px;
-}
-
-.card__content {
-    padding: 20px;
-}
-
-.card__price {
-    color: var(--color-accent);
-    margin-bottom: 10px;
-}
-
-.card__name {
-    margin-bottom: 10px;
-    color: var(--color-dark-gray);
-}
-
-.card__flavor {
-    color: var(--color-primary);
+    gap: 15px;
     margin-bottom: 20px;
 }
 
-.card__actions {
+.product-price-wrapper__current {
+    color: var(--color-accent);
+}
+
+.product-price-wrapper__old {
+    color: var(--color-primary);
+    text-decoration: line-through;
+}
+
+/* ============================================== */
+/* GIFT CARD BLOCK (С наложением)                 */
+/* ============================================== */
+
+.gift-card {
     display: flex;
-    gap: 10px;
+    /* Убрали фон и тень с главного контейнера */
+    max-width: 1100px; /* Чуть шире, чтобы компенсировать наложение */
+    margin: 60px auto; /* Добавили внешние отступы сверху/снизу */
+    align-items: center; /* Выравнивание по вертикали */
+    position: relative;
 }
 
-/* ============================================== */
-/* БЛОК: button                                   */
-/* ============================================== */
+.gift-card__image {
+    /* Изображение занимает около 45% ширины */
+    flex: 0 0 45%;
+    /* Убрали серый фон и паддинги */
+    display: flex;
+    justify-content: center;
+    position: relative;
+    z-index: 2; /* ВАЖНО: Изображение выше по слою, чем контент */
+    /* Небольшой сдвиг влево для акцента, как на макете */
+    transform: translateX(-20px);
+}
 
-.btn {
-    padding: 8px 20px;
-    border-radius: 20px;
-    font-weight: 600;
+.gift-card__image img {
+    max-width: 110%; /* Позволяем картинке быть чуть больше своего блока */
+    height: auto;
+    /* Усиленная тень для большего объема и отделения от фона */
+    filter: drop-shadow(0 20px 30px rgba(0,0,0,0.15));
+}
+
+.gift-card__content {
+    flex: 1;
+    /* Фон и тень переехали сюда */
+    background-color: var(--color-white);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+    border-radius: 4px;
+    position: relative;
+    z-index: 1; /* Контент ниже по слою */
+
+    /* ВАЖНО: Отрицательный отступ слева затягивает блок под картинку */
+    margin-left: -120px;
+
+    /* ВАЖНО: Увеличенный паддинг слева, чтобы текст не залез под картинку.
+       Он должен быть больше, чем отрицательный margin */
+    padding: 60px 60px 60px 140px;
+}
+
+
+.gift-card__price {
+    color: var(--color-accent);
+    margin-bottom: 8px;
+}
+
+.gift-card__title {
+    margin-bottom: 16px;
+    color: var(--color-primary);
+}
+
+.gift-card__description {
+    margin-bottom: 30px;
+    color: var(--color-primary);
+    opacity: 0.8;
+}
+
+/* Сетка характеристик */
+.gift-card__specs {
+    display: flex;
+    gap: 40px;
+    margin-bottom: 40px;
+    padding-top: 20px;
+    border-top: 1px solid var(--color-light-gray); /* Легкая линия разделитель как на макете */
+}
+
+.gift-card__spec-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.gift-card__spec-icon {
+    width: 36px;
+    height: 36px;
+    object-fit: contain;
+}
+
+.gift-card__spec-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.gift-card__spec-text .text--description {
+    font-style: normal;
+    font-size: 13px;
+    color: var(--color-primary);
+    opacity: 0.6;
+    margin-bottom: 2px;
+}
+
+/* Кнопки */
+.gift-card__actions {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.gift-card__button {
+    border: none;
     cursor: pointer;
-    transition: var(--transition);
-    text-decoration: none;
-    display: inline-block;
-    text-align: center;
+    background: none;
+    transition: opacity 0.2s ease;
+    letter-spacing: 0.5px;
 }
 
-.btn--primary {
+.gift-card__button:hover {
+    opacity: 0.8;
+}
+
+.gift-card__button--buy {
     background-color: var(--color-accent);
     color: var(--color-white);
-    border: none;
+    padding: 14px 38px; /* Чуть больше кнопки */
+    border-radius: 30px;
+    box-shadow: 0 10px 20px -5px rgba(199, 161, 122, 0.5); /* Тень в цвет кнопки */
 }
 
-.btn--primary:hover {
-    background-color: #b8906a;
-}
-
-.btn--secondary {
-    background-color: transparent;
+.gift-card__button--detail {
     color: var(--color-primary);
-    border: 1px solid var(--color-primary);
-}
-
-.btn--secondary:hover {
-    background-color: var(--color-primary);
-    color: var(--color-white);
+    text-decoration: none;
+    font-weight: var(--weight-bold);
 }
 
 /* ============================================== */
-/* БЛОК: footer                                   */
+/* АДАПТИВНОСТЬ                                   */
 /* ============================================== */
 
-.footer {
-    padding: 20px;
-    text-align: center;
-    background: var(--color-light-gray);
-    color: var(--color-primary)
+/* Планшеты для основной сетки продуктов */
+/* На планшетах перекидываем в одну колонку или две */
+@media (max-width: 1200px) {
+    .combo-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 900px) {
+    .product-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 860px) {
+    .combo-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Мобильные для карточек (трансформация горизонтальной в вертикальную) */
+@media (max-width: 1150px) {
+    .product-card:not(.product-card--vertical) { /* Применяем только к горизонтальным */
+        flex-direction: column;
+        gap: 16px;
+        padding: 16px;
+    }
+    .product-card__image {
+        width: 100%;
+    }
+    .product-card__content {
+        width: 100%;
+        padding: 16px;
+        max-width: 100%;
+    }
+    .product-card__button {
+        flex: 1;
+    }
+}
+
+/* Маленькие экраны */
+@media (max-width: 450px) {
+    .product-card__actions {
+        flex-direction: column;
+    }
+    .product-card__button {
+        white-space: normal;
+        padding: 10px 16px;
+        width: 100%;
+    }
+}
+
+/* ============================================== */
+/* АДАПТИВНОСТЬ ДЛЯ GIFT CARD                     */
+/* ============================================== */
+
+@media (max-width: 1024px) {
+    /* На планшетах уменьшаем наложение */
+    .gift-card__content {
+        margin-left: -80px;
+        padding-left: 100px;
+    }
+}
+
+@media (max-width: 900px) {
+    .gift-card {
+        flex-direction: column;
+        max-width: 550px;
+        /* Сбрасываем внешние отступы */
+        margin: 30px auto;
+    }
+
+    .gift-card__image {
+        flex: 0 0 auto;
+        width: 100%;
+        max-width: 400px;
+        /* На мобильном картинка сверху, убираем боковой сдвиг */
+        transform: translateY(30px); /* Сдвигаем немного вниз, чтобы наехала на контент сверху */
+        margin-bottom: -30px; /* Компенсируем сдвиг отрицательным отступом */
+    }
+
+    .gift-card__content {
+        width: 100%;
+        /* Сбрасываем "настольные" отступы и паддинги */
+        margin-left: 0;
+        padding: 60px 30px 40px; /* Увеличенный паддинг сверху для картинки */
+        text-align: center;
+    }
+
+    .gift-card__specs {
+        flex-direction: column;
+        gap: 20px;
+        align-items: center; /* Центрируем характеристики */
+        text-align: left;
+    }
+
+    .gift-card__actions {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 450px) {
+    .gift-card__specs {
+        align-items: flex-start;
+        width: 100%;
+    }
+
+    .gift-card__actions {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .gift-card__button--buy {
+        width: 100%;
+    }
 }
