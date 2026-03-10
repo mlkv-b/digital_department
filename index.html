@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Focus — Личный Менеджмент</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Фиксированный фон с клеткой */
+        .fixed-grid {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #ffffff;
+            background-image:
+                    linear-gradient(rgba(0, 0, 0, 0.04) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(0, 0, 0, 0.04) 1px, transparent 1px);
+            background-size: 20px 20px;
+            z-index: -2;
+            pointer-events: none;
+        }
+
+        /* Более заметная линия каждые 100px */
+        .fixed-grid::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image:
+                    linear-gradient(rgba(0, 0, 0, 0.08) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(0, 0, 0, 0.08) 1px, transparent 1px);
+            background-size: 100px 100px;
+        }
+
+        .thin-border {
+            border-color: rgba(0,0,0,0.15);
+        }
+        .hover-line::after {
+            content: '';
+            display: block;
+            width: 0;
+            height: 1px;
+            background: black;
+            transition: width .3s;
+        }
+        .hover-line:hover::after {
+            width: 100%;
+        }
+
+        /* Карточки контента */
+        .content-card {
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(8px);
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.04);
+        }
+    </style>
+</head>
+<body class="text-gray-900 flex flex-col min-h-screen">
+
+<!-- FIXED GRID BACKGROUND -->
+<div class="fixed-grid"></div>
+
+<!-- HEADER -->
+<header class="fixed w-full top-0 bg-white/95 backdrop-blur-sm z-50 border-b thin-border">
+    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+        <a href="#" class="text-xl font-bold tracking-tight hover:opacity-70 transition">
+            FOCUS.
+        </a>
+
+        <nav class="hidden md:flex space-x-12 text-sm font-medium text-gray-700">
+            <a href="#features" class="hover:text-black transition">Возможности</a>
+            <a href="#philosophy" class="hover:text-black transition">Философия</a>
+            <a href="#try" class="hover:text-black transition">Присоединиться</a>
+        </nav>
+
+        <a href="#" class="text-sm font-semibold border border-gray-300 px-6 py-2.5 rounded-full hover:bg-black hover:text-white hover:border-black transition duration-300">
+            Войти
+        </a>
+    </div>
+</header>
+
+<!-- HERO SECTION -->
+<section class="flex-grow flex items-center pt-32 pb-20 md:pt-48 md:pb-32 px-6">
+    <div class="max-w-4xl mx-auto text-center content-card rounded-2xl p-12 md:p-16">
+        <h1 class="text-5xl md:text-7xl font-bold tracking-tight mb-8 leading-[1.1] text-gray-900">
+            Управляйте хаосом.<br>
+            Создавайте структуру.
+        </h1>
+        <p class="text-lg md:text-xl text-gray-600 mb-12 max-w-2xl mx-auto font-normal leading-relaxed">
+            Минималистичная платформа для тех, кто ценит свое время.
+            Никаких лишних функций. Только то, что нужно для фокуса.
+        </p>
+        <div class="flex flex-col md:flex-row gap-4 justify-center">
+            <a href="#" class="bg-gray-900 text-white px-8 py-4 rounded-full font-semibold hover:bg-black transition duration-300">
+                Начать бесплатно
+            </a>
+            <a href="#demo" class="px-8 py-4 rounded-full font-semibold border border-gray-300 hover:border-gray-900 hover:bg-gray-50 transition duration-300">
+                Смотреть демо
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- FEATURES GRID -->
+<section id="features" class="border-t thin-border py-24 px-6">
+    <div class="max-w-7xl mx-auto content-card rounded-2xl p-12">
+        <div class="mb-16">
+            <h2 class="text-3xl font-bold tracking-tight text-gray-900">Возможности платформы</h2>
+            <p class="text-gray-600 mt-2 font-normal">Инструменты для ясного мышления.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 border-l border-t thin-border">
+
+            <!-- Feature 1 -->
+            <div class="p-10 border-r border-b thin-border hover:bg-gray-50 transition duration-300">
+                <div class="w-10 h-10 mb-6 flex items-center justify-center border border-gray-400 rounded-full">
+                    <svg class="w-4 h-4 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path></svg>
+                </div>
+                <h3 class="text-xl font-bold mb-3 text-gray-900">Задачи</h3>
+                <p class="text-gray-600 font-normal leading-relaxed">
+                    Простой список дел без сложных тегов и категорий. Фокус на завершении, а не на планировании.
+                </p>
+            </div>
+
+            <!-- Feature 2 -->
+            <div class="p-10 border-r border-b thin-border hover:bg-gray-50 transition duration-300">
+                <div class="w-10 h-10 mb-6 flex items-center justify-center border border-gray-400 rounded-full">
+                    <svg class="w-4 h-4 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                </div>
+                <h3 class="text-xl font-bold mb-3 text-gray-900">Тайм-блокинг</h3>
+                <p class="text-gray-600 font-normal leading-relaxed">
+                    Визуализируйте свой день. Распределите задачи по временным слотам за пару кликов.
+                </p>
+            </div>
+
+            <!-- Feature 3 -->
+            <div class="p-10 border-r border-b thin-border hover:bg-gray-50 transition duration-300">
+                <div class="w-10 h-10 mb-6 flex items-center justify-center border border-gray-400 rounded-full">
+                    <svg class="w-4 h-4 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                </div>
+                <h3 class="text-xl font-bold mb-3 text-gray-900">Фокус-режим</h3>
+                <p class="text-gray-600 font-normal leading-relaxed">
+                    Встроенный таймер Pomodoro и блокировка уведомлений для глубокой работы.
+                </p>
+            </div>
+
+            <!-- Feature 4 -->
+            <div class="p-10 border-r border-b thin-border hover:bg-gray-50 transition duration-300">
+                <div class="w-10 h-10 mb-6 flex items-center justify-center border border-gray-400 rounded-full">
+                    <svg class="w-4 h-4 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
+                </div>
+                <h3 class="text-xl font-bold mb-3 text-gray-900">Аналитика</h3>
+                <p class="text-gray-600 font-normal leading-relaxed">
+                    Простые графики продуктивности. Поймите, куда уходит ваше время.
+                </p>
+            </div>
+
+            <!-- Feature 5 -->
+            <div class="p-10 border-r border-b thin-border hover:bg-gray-50 transition duration-300">
+                <div class="w-10 h-10 mb-6 flex items-center justify-center border border-gray-400 rounded-full">
+                    <svg class="w-4 h-4 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
+                </div>
+                <h3 class="text-xl font-bold mb-3 text-gray-900">Заметки</h3>
+                <p class="text-gray-600 font-normal leading-relaxed">
+                    Быстрый захват идей. Привязывайте заметки к задачам или дням.
+                </p>
+            </div>
+
+            <!-- Feature 6 -->
+            <div class="p-10 border-r border-b thin-border hover:bg-gray-50 transition duration-300">
+                <div class="w-10 h-10 mb-6 flex items-center justify-center border border-gray-400 rounded-full">
+                    <svg class="w-4 h-4 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path></svg>
+                </div>
+                <h3 class="text-xl font-bold mb-3 text-gray-900">Синхронизация</h3>
+                <p class="text-gray-600 font-normal leading-relaxed">
+                    Доступ с любого устройства. Данные шифруются и синхронизируются мгновенно.
+                </p>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- CALL TO ACTION -->
+<section id="try" class="py-32 px-6 border-t thin-border">
+    <div class="max-w-3xl mx-auto text-center content-card rounded-2xl p-12">
+        <h2 class="text-4xl md:text-5xl font-bold tracking-tight mb-8 text-gray-900">
+            Верните контроль над своей жизнью.
+        </h2>
+        <p class="text-lg text-gray-600 mb-10 font-normal leading-relaxed">
+            Присоединяйтесь к 10,000+ пользователей, которые выбрали ясность вместо хаоса.
+        </p>
+        <form class="flex flex-col md:flex-row gap-4 justify-center max-w-md mx-auto">
+            <button type="submit" class="w-full md:w-auto px-8 py-4 bg-gray-900 text-white rounded-full font-semibold hover:bg-black transition whitespace-nowrap">
+                Попробовать
+            </button>
+        </form>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="border-t thin-border py-12 px-6 bg-white/95 backdrop-blur-sm">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
+
+        <div class="text-sm text-gray-600 font-normal">
+            &copy; 2023 Focus Inc. Все права защищены.
+        </div>
+
+        <div class="flex space-x-8 text-sm font-medium text-gray-700">
+            <a href="#" class="hover-line hover:text-black">Twitter</a>
+            <a href="#" class="hover-line hover:text-black">Instagram</a>
+            <a href="#" class="hover-line hover:text-black">LinkedIn</a>
+        </div>
+
+        <div class="flex space-x-6 text-sm text-gray-500 font-normal">
+            <a href="#" class="hover:text-gray-900 transition">Privacy</a>
+            <a href="#" class="hover:text-gray-900 transition">Terms</a>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>
