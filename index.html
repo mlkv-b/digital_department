@@ -21,199 +21,11 @@
             }
         }
     </script>
-    <style>
-        /* ============================================
-           CSS RESET & NORMALIZATION
-           ============================================ */
 
-        /* Box sizing для всех элементов */
-        *, *::before, *::after {
-            box-sizing: border-box;
-        }
-
-        /* Убираем стандартные отступы */
-        * {
-            margin: 0;
-            padding: 0;
-        }
-
-        /* Базовые настройки body */
-        body {
-            font-family: 'Inter', system-ui, -apple-system, sans-serif;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-            line-height: 1.5;
-            min-height: 100vh;
-            text-rendering: optimizeSpeed;
-        }
-
-        /* Убираем стандартные стили списков */
-        ul, ol {
-            list-style: none;
-        }
-
-        /* Ссылки без подчеркивания */
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
-
-        /* Изображения адаптивные */
-        img, picture, video, canvas, svg {
-            display: block;
-            max-width: 100%;
-        }
-
-        /* Наследование шрифтов для форм */
-        input, button, textarea, select {
-            font: inherit;
-            color: inherit;
-        }
-
-        /* Убираем стандартные стили кнопок */
-        button {
-            background: none;
-            border: none;
-            cursor: pointer;
-        }
-
-        /* Убираем outline при фокусе (добавим свой) */
-        button:focus, input:focus, a:focus {
-            outline: none;
-        }
-
-        /* Плавный скролл */
-        html {
-            scroll-behavior: smooth;
-        }
-
-        /* Убираем синюю подсветку на мобильных */
-        * {
-            -webkit-tap-highlight-color: transparent;
-        }
-
-        /* Нормализация заголовков */
-        h1, h2, h3, h4, h5, h6 {
-            font-size: inherit;
-            font-weight: inherit;
-        }
-
-        /* Таблицы */
-        table {
-            border-collapse: collapse;
-            border-spacing: 0;
-        }
-
-        /* ============================================
-           КАСТОМНЫЕ СТИЛИ ПРОЕКТА
-           ============================================ */
-
-        body {
-            font-family: 'Inter', system-ui, -apple-system, sans-serif;
-            -webkit-font-smoothing: antialiased;
-        }
-
-         /* Фиксированный фон с клеткой - светлая тема*/
-        .fixed-grid {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: #ffffff;
-            background-image:
-                    linear-gradient(rgba(0, 0, 0, 0.04) 1px, transparent 1px),
-                    linear-gradient(90deg, rgba(0, 0, 0, 0.04) 1px, transparent 1px);
-            background-size: 20px 20px;
-            z-index: -2;
-            pointer-events: none;
-        }
-
-        .fixed-grid::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image:
-                    linear-gradient(rgba(0, 0, 0, 0.08) 1px, transparent 1px),
-                    linear-gradient(90deg, rgba(0, 0, 0, 0.08) 1px, transparent 1px);
-            background-size: 100px 100px;
-        }
-
-        /* Тёмная тема фона */
-        .dark .fixed-grid {
-            background-color: #0a0a0a;
-            background-image:
-                    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-                    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-        }
-
-        .dark .fixed-grid::before {
-            background-image:
-                    linear-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px),
-                    linear-gradient(90deg, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
-        }
-
-        .thin-border {
-            border-color: rgba(0,0,0,0.15);
-        }
-
-        .dark .thin-border {
-            border-color: rgba(255,255,255,0.1);
-        }
-
-        .hover-line::after {
-            content: '';
-            display: block;
-            width: 0;
-            height: 1px;
-            background: black;
-            transition: width .3s;
-        }
-
-        .dark .hover-line::after {
-            background: white;
-        }
-
-        .hover-line:hover::after {
-            width: 100%;
-        }
-
-        /* Карточки контента */
-        .content-card {
-            background: rgba(255, 255, 255, 0.92);
-            backdrop-filter: blur(8px);
-            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.04);
-        }
-
-        .dark .content-card {
-            background: rgba(20, 20, 20, 0.92);
-            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
-        }
-
-        /* Анимация переключения темы */
-        .theme-transition {
-            transition: background-color 0.3s ease,
-            border-color 0.3s ease,
-            color 0.3s ease;
-        }
-
-        /* Кастомный фокус для доступности */
-        button:focus-visible,
-        input:focus-visible,
-        a:focus-visible {
-            outline: 2px solid #000;
-            outline-offset: 2px;
-        }
-
-        .dark button:focus-visible,
-        .dark input:focus-visible,
-        .dark a:focus-visible {
-            outline: 2px solid #fff;
-        }
-    </style>
+    <!-- Кастомные стили -->
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="styles/reset.css">
+    <link rel="stylesheet" href="styles/variables.css">
 </head>
 <body class="text-gray-900 dark:text-gray-100 flex flex-col min-h-screen theme-transition">
 
@@ -221,7 +33,7 @@
 <div class="fixed-grid"></div>
 
 <!-- HEADER -->
-<header class="fixed w-full top-0 bg-white/95 dark:bg-dark-bg/95 backdrop-blur-sm z-50 border-b thin-border theme-transition">
+<header class="fixed w-full top-0 bg-white/95 dark:bg-dark-bg/95 backdrop-blur-sm z-50 theme-transition">
     <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
         <a href="#" class="text-xl font-bold tracking-tight hover:opacity-70 transition">
             FOCUS.
@@ -276,7 +88,7 @@
 </section>
 
 <!-- FEATURES GRID -->
-<section id="features" class="border-t thin-border py-24 px-6">
+<section id="features" class="py-24 px-6">
     <div class="max-w-7xl mx-auto content-card rounded-2xl p-12 theme-transition">
         <div class="mb-16">
             <h2 class="text-3xl font-bold tracking-tight text-gray-900 dark:text-white">Возможности платформы</h2>
@@ -288,7 +100,7 @@
             <!-- Feature 1 -->
             <div class="p-10 border-r border-b thin-border hover:bg-gray-50 dark:hover:bg-dark-card transition duration-300">
                 <div class="w-10 h-10 mb-6 flex items-center justify-center border border-gray-400 dark:border-gray-500 rounded-full">
-                    <svg class="w-4 h-4 text-gray-700 dark:text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path></svg>
+                    <svg class="w-4 h-4 text-gray-700 dark:text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                 </div>
                 <h3 class="text-xl font-bold mb-3 text-gray-900 dark:text-white">Задачи</h3>
                 <p class="text-gray-600 dark:text-gray-400 font-normal leading-relaxed">
@@ -356,7 +168,7 @@
 </section>
 
 <!-- CALL TO ACTION -->
-<section class="py-32 px-6 border-t thin-border">
+<section class="py-32 px-6 ">
     <div class="max-w-3xl mx-auto text-center content-card rounded-2xl p-12 theme-transition">
         <h2 class="text-4xl md:text-5xl font-bold tracking-tight mb-8 text-gray-900 dark:text-white">
             Верните контроль над своей жизнью.
@@ -374,7 +186,7 @@
 </section>
 
 <!-- FOOTER -->
-<footer class="border-t thin-border py-12 px-6 bg-white/95 dark:bg-dark-bg/95 backdrop-blur-sm theme-transition">
+<footer class="py-12 px-6 bg-white/95 dark:bg-dark-bg/95 backdrop-blur-sm theme-transition">
     <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
 
         <div class="text-sm text-gray-600 dark:text-gray-400 font-normal">
@@ -395,42 +207,7 @@
 </footer>
 
 <!-- Theme Toggle Script -->
-<script>
-    function getPreferredTheme() {
-        const savedTheme = localStorage.getItem('theme');
-        if (savedTheme) {
-            return savedTheme;
-        }
-        return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-    }
-
-    function applyTheme(theme) {
-        const html = document.documentElement;
-        if (theme === 'dark') {
-            html.classList.remove('light');
-            html.classList.add('dark');
-        } else {
-            html.classList.remove('dark');
-            html.classList.add('light');
-        }
-        localStorage.setItem('theme', theme);
-    }
-
-    applyTheme(getPreferredTheme());
-
-    document.getElementById('theme-toggle').addEventListener('click', () => {
-        const html = document.documentElement;
-        const currentTheme = html.classList.contains('dark') ? 'dark' : 'light';
-        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-        applyTheme(newTheme);
-    });
-
-    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
-        if (!localStorage.getItem('theme')) {
-            applyTheme(e.matches ? 'dark' : 'light');
-        }
-    });
-</script>
+<script src="scripts/theme.js"></script>
 
 </body>
 </html>

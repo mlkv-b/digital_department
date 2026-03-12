@@ -1,0 +1,81 @@
+/* ============================================
+   CSS RESET & NORMALIZATION
+   ============================================ */
+
+/* Box sizing для всех элементов */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+/* Убираем стандартные отступы */
+* {
+    margin: 0;
+    padding: 0;
+}
+
+/* Базовые настройки body */
+body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    line-height: 1.5;
+    min-height: 100vh;
+    text-rendering: optimizeSpeed;
+}
+
+/* Убираем стандартные стили списков */
+ul, ol {
+    list-style: none;
+}
+
+/* Ссылки без подчеркивания */
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Изображения адаптивные */
+img, picture, video, canvas, svg {
+    display: block;
+    max-width: 100%;
+}
+
+/* Наследование шрифтов для форм */
+input, button, textarea, select {
+    font: inherit;
+    color: inherit;
+}
+
+/* Убираем стандартные стили кнопок */
+button {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+/* Убираем outline при фокусе (добавим свой) */
+button:focus, input:focus, a:focus {
+    outline: none;
+}
+
+/* Плавный скролл */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Убираем синюю подсветку на мобильных */
+* {
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* Нормализация заголовков */
+h1, h2, h3, h4, h5, h6 {
+    font-size: inherit;
+    font-weight: inherit;
+}
+
+/* Таблицы */
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
