@@ -1,10 +1,99 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru" class="light">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Focus — FAQ</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        dark: {
+                            bg: '#0a0a0a',
+                            card: '#141414',
+                            border: '#262626',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Кастомные стили -->
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="styles/reset.css">
+    <link rel="stylesheet" href="styles/variables.css">
 </head>
-<body>
+<body class="text-gray-900 dark:text-gray-100 flex flex-col min-h-screen theme-transition">
+
+<!-- FIXED GRID BACKGROUND -->
+<div class="fixed-grid"></div>
+
+<!-- HEADER -->
+<header class="fixed w-full top-0 bg-white/95 dark:bg-dark-bg/95 backdrop-blur-sm z-50 theme-transition">
+    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+        <a href="#" class="text-xl font-bold tracking-tight hover:opacity-70 transition">
+            FOCUS.
+        </a>
+
+        <nav class="hidden md:flex space-x-12 text-sm font-medium text-gray-700 dark:text-gray-300">
+            <a href="index.html#features" class="hover:text-black dark:hover:text-white transition">Возможности</a>
+            <a href="faq.html" class="hover:text-black dark:hover:text-white transition">FAQ</a>
+            <a href="index.html#try" class="hover:text-black dark:hover:text-white transition">Попробовать</a>
+        </nav>
+
+        <div class="flex items-center gap-4">
+            <!-- Theme Toggle Button -->
+            <button id="theme-toggle" class="p-2.5 rounded-full border border-gray-300 dark:border-dark-border hover:bg-gray-100 dark:hover:bg-dark-card transition duration-300" aria-label="Переключить тему">
+                <!-- Sun Icon (для тёмной темы) -->
+                <svg class="w-5 h-5 hidden dark:block text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
+                </svg>
+                <!-- Moon Icon (для светлой темы) -->
+                <svg class="w-5 h-5 block dark:hidden text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+                </svg>
+            </button>
+
+            <a href="#" class="text-sm font-semibold border border-gray-300 dark:border-dark-border px-6 py-2.5 rounded-full hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black hover:border-black dark:hover:border-white transition duration-300">
+                Войти
+            </a>
+        </div>
+    </div>
+</header>
+
+<section class="py-24 px-6">
+    <div class="text-center px-4">
+        ВОПРОС РЕБРОм
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="py-12 px-6 bg-white/95 dark:bg-dark-bg/95 backdrop-blur-sm theme-transition">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
+
+        <div class="text-sm text-gray-600 dark:text-gray-400 font-normal">
+            &copy; 2023 Focus Inc. Все права защищены.
+        </div>
+
+        <div class="flex space-x-8 text-sm font-medium text-gray-700 dark:text-gray-300">
+            <a href="#" class="hover-line hover:text-black dark:hover:text-white">Twitter</a>
+            <a href="#" class="hover-line hover:text-black dark:hover:text-white">Instagram</a>
+            <a href="#" class="hover-line hover:text-black dark:hover:text-white">LinkedIn</a>
+        </div>
+
+        <div class="flex space-x-6 text-sm text-gray-500 dark:text-gray-500 font-normal">
+            <a href="#" class="hover:text-gray-900 dark:hover:text-white transition">Privacy</a>
+            <a href="#" class="hover:text-gray-900 dark:hover:text-white transition">Terms</a>
+        </div>
+    </div>
+</footer>
+
+<!-- Theme Toggle Script -->
+<script src="scripts/theme.js"></script>
 
 </body>
 </html>
